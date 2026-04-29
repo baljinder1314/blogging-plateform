@@ -4,15 +4,24 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const ApiError = require("./src/utils/ApiError");
 const path = require("path");
-require('dotenv').config({path:"./.env"})
+require("dotenv").config({ path: "./.env" });
 
 // CORS middleware
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL, 
+    origin: process.env.FRONTEND_URL,
+
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: [
+      "Access-Control-Allow-Origin",
+      "Content-Type",
+      "Authorization",
+      "Origin",
+      "X-Requested-With",
+      "Accept",
+    ],
+    exposedHeaders: ["Access-Control-Allow-Credentials"],
   }),
 );
 
