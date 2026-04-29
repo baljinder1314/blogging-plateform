@@ -170,10 +170,19 @@ const uploadImage = asyncHandler(async (req, res, next) => {
     .json(new ApiResponse(201, { user: uploadImage }, "Image uploaded"));
 });
 
+const me = asyncHandler(async (req, res, next) => {
+  let userId = req.user._id;
+
+  const user = await User.findById(userId).select("-password -refreshToken");
+
+  res.status(201).json(new ApiResponse(201, { user: user }, "done"));
+});
+
 module.exports = {
   register,
   login,
   logout,
   refreshToken,
   uploadImage,
+  me
 };
