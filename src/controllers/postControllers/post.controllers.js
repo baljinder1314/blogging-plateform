@@ -16,7 +16,7 @@ const post = asyncHandler(async (req, res, next) => {
   let imageUrl = "";
 
   if (req.file) {
-    const uploadedImage = await uploadUserImage(req.file?.path);
+    const uploadedImage = await uploadUserImage(req.file?.path,"post");
     imageUrl = uploadedImage?.imageUrl;
   }
 

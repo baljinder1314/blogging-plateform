@@ -147,7 +147,7 @@ const uploadImage = asyncHandler(async (req, res, next) => {
   if (!image) {
     throw new ApiError(404, "Image path is not found");
   }
-  const uriOfImage = await uploadUserImage(image.path);
+  const uriOfImage = await uploadUserImage(image.path, "profile");
 
   if (!uriOfImage) {
     return next(new ApiError(500, "Image is not uploaded on cloudinary"));
