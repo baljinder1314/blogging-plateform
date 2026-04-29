@@ -27,7 +27,7 @@ const generateAccessAndRefreshToken = async (userId) => {
 const options = {
   httpOnly: true,
   secure: true,
-  sameSite: "lax",
+  sameSite: "None",
 };
 //Register
 const register = asyncHandler(async (req, res, next) => {
@@ -184,5 +184,5 @@ module.exports = {
   logout,
   refreshToken,
   uploadImage,
-  me
+  me,
 };
